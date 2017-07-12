@@ -2,9 +2,12 @@
 
 {% block content %}
 	
+	<main role="main">
+	
 		{% for entry in craft.entries.section('blog').limit(5).find() %}
-			<h2 class="entry_title"><a href="{{ entry.url }}">{{ entry.title }}</a></h2>
-			{{ entry.body }}
+			{% include "partials/_entry_teaser.html" %}
 		{% endfor %}
+
+	</main>
 
 {% endblock %}

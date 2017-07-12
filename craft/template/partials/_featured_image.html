@@ -1,0 +1,15 @@
+{% if entry.featuredImage | lengh %}
+
+{% set featuredImage = "" %}
+{% set img_transform = {
+    mode: 'fit',
+    width: 752
+} %}
+
+{% for asset in entry.featuredImage %}
+    {% set featuredImage = asset.getUrl(img_transform) %}
+{% endfor %}
+
+<img src="{{featuredImage}}" alt="{{entry.title}}">
+
+{% endif %}
