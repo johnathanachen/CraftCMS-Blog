@@ -1,15 +1,14 @@
-{% if entry.featuredImage | lengh %}
+{% if entry.featuredImage | length %}
 
-{% set featuredImage = "" %}
-{% set img_transform = {
-    mode: 'fit',
-    width: 752
-} %}
+	{% set featuredImage = "" %}
+	{% set img_transform = {
+		mode: 'fit',
+		width: 752
+	} %}
+	{% for asset in entry.featuredImage %}
+		{% set featuredImage = asset.getUrl(img_transform) %}
+	{% endfor %}
 
-{% for asset in entry.featuredImage %}
-    {% set featuredImage = asset.getUrl(img_transform) %}
-{% endfor %}
-
-<img src="{{featuredImage}}" alt="{{entry.title}}">
+	<img src="{{featuredImage}}" alt="{{entry.title}}">
 
 {% endif %}
